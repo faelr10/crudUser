@@ -59,16 +59,18 @@ implements IUserRepository
 
     async update(id:string, name?:string, CPF?:string, email?:string):Promise<object>{
 
-        const user = await this.getRepo().update(id,{
-            name,
-            CPF,
-            email
-        })
+
+        const user = await this.getRepo().findOne(id)
+
+        user.name = name ? name : user.name
+        user.CPF = CPF ? CPF : user.CPF
+        user.email = email ? email : email 
+
+        await this.getRepo().save(user)
 
         return user
 
     }
-
 
 
 }

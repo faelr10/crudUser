@@ -81,11 +81,7 @@ export default class UserController implements IUserController{
             res.status(422).json({message:"Campo email não pode ser vazio!"})
         }
 
-        const user = await this.userService.findById(id)
-
-        user.name = name ? name : user.name
-        user.CPF = CPF ? CPF : user.CPF
-        user.email = email ? email : email 
+        const user = await this.userService.update(id,name,CPF,email)
 
         res.json(user)
 
