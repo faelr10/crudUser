@@ -49,7 +49,12 @@ implements IUserRepository
 
     //_________________________________________________________________________
 
-    async delete(id):Promise<void>{
+    async delete(id):Promise<void|Error>{
+
+
+        if(!(await this.getRepo().findOne(id))){
+            return new Error ("User does not exists!")
+        }
         
         const user = await this.getRepo().delete(id)
 
@@ -65,7 +70,6 @@ implements IUserRepository
         if(!user){
             return new Error ("User does not exists!")
         }
-
 
         user.name = name ? name : user.name
         user.CPF = CPF ? CPF : user.CPF

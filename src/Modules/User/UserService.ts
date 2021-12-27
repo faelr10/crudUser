@@ -35,7 +35,7 @@ export default class userService implements IUserService{
 
     }
     //_________________________________________________________________________
-    async delete(id:string, name?:string, CPF?:string, email?:string):Promise<void>{
+    async delete(id:string, name?:string, CPF?:string, email?:string):Promise<void|Error>{
         
         const user = await this.userRepository.delete(id)
 

@@ -61,6 +61,10 @@ export default class UserController implements IUserController{
 
         const user = await this.userService.delete(id)
 
+        if(user instanceof Error){
+            res.json(user.message)
+        }
+
         res.status(204).json(user)
     }
 
