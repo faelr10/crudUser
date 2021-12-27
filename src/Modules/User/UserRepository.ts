@@ -39,9 +39,13 @@ implements IUserRepository
     }
     //_________________________________________________________________________
 
-    async findById(id):Promise<User>{
+    async findById(id):Promise<User|Error>{
 
         const user = await this.getRepo().findOne(id)
+
+        if(!user){
+            return new Error("User does not exists!")
+        }
 
         return user
 

@@ -27,7 +27,7 @@ export default class userService implements IUserService{
         return users
     }
     //_________________________________________________________________________
-    async findById(id:string, name?:string, CPF?:string, email?:string):Promise<User>{
+    async findById(id:string, name?:string, CPF?:string, email?:string):Promise<User|Error>{
 
         const user = await this.userRepository.findById(id)
 

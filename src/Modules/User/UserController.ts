@@ -51,6 +51,10 @@ export default class UserController implements IUserController{
 
         const user = await this.userService.findById(id)
 
+        if(user instanceof Error){
+            res.json(user.message)
+        }
+
         res.json(user)
 
     }
