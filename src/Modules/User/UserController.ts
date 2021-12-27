@@ -13,6 +13,18 @@ export default class UserController implements IUserController{
 
         const {name,CPF,email} = req.body
 
+        if(!name){
+            res.status(422).json({message:"Campo name não pode ser vazio!"})
+        }
+
+        if(!CPF){
+            res.status(422).json({message:"Campo CPF não pode ser vazio!"})
+        }
+
+        if(!email){
+            res.status(422).json({message:"Campo email não pode ser vazio!"})
+        }
+
         const user = await this.userService.create({
             name,
             CPF,
@@ -56,6 +68,18 @@ export default class UserController implements IUserController{
 
         const {id} = req.params
         const{name,CPF,email} = req.body
+
+        if(!name){
+            res.status(422).json({message:"Campo name não pode ser vazio!"})
+        }
+
+        if(!CPF){
+            res.status(422).json({message:"Campo CPF não pode ser vazio!"})
+        }
+
+        if(!email){
+            res.status(422).json({message:"Campo email não pode ser vazio!"})
+        }
 
         const user = await this.userService.findById(id)
 
