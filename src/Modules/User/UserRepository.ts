@@ -15,7 +15,11 @@ implements IUserRepository
 
     //_________________________________________________________________________
 
-    async create({name,CPF,email}:IUser):Promise<User>{
+    async create({name,CPF,email}:IUser):Promise<User|Error>{
+
+        if(await this.getRepo().findOne({name})){
+            return new Error ("Does not exists users!")
+        }
 
         const user = this.getRepo().create({
             name,

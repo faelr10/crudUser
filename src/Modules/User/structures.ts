@@ -11,7 +11,7 @@ export interface IUser{
 }
 
 export interface IUserRepository{
-    create(data:IUser):Promise<User>
+    create(data:IUser):Promise<User|Error>
     find():Promise<object>
     findById(id:string):Promise<User|Error>
     delete(id:string):Promise<void|Error>
@@ -19,7 +19,7 @@ export interface IUserRepository{
 }
 
 export interface IUserService{
-    create({id,name,CPF,email}: IUser): Promise<object>
+    create({id,name,CPF,email}: IUser): Promise<object|Error>
     find():Promise<object>
     findById(id:string, name?:string, CPF?:string,email?:string):Promise<User|Error>
     delete(id:string, name?:string, CPF?:string,email?:string):Promise<void|Error>

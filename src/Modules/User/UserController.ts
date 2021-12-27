@@ -30,6 +30,11 @@ export default class UserController implements IUserController{
             CPF,
             email
         })
+
+        if(user instanceof Error){
+            res.json(user.message)
+        }
+        
         res.json(user)
     }
 
