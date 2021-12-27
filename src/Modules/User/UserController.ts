@@ -69,8 +69,11 @@ export default class UserController implements IUserController{
         const {id} = req.params
         const{name,CPF,email} = req.body
 
-
         const user = await this.userService.update(id,name,CPF,email)
+
+        if(user instanceof Error){
+            res.json(user.message)
+        }
 
         res.json(user)
 

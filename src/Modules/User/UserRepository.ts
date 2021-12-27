@@ -62,6 +62,11 @@ implements IUserRepository
 
         const user = await this.getRepo().findOne(id)
 
+        if(!user){
+            return new Error ("User does not exists!")
+        }
+
+
         user.name = name ? name : user.name
         user.CPF = CPF ? CPF : user.CPF
         user.email = email ? email : email 
