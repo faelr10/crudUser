@@ -1,5 +1,4 @@
 import { Request, Response } from "express"
-import { stringify } from "qs"
 import { IUserController, IUserService } from "./structures"
 
 

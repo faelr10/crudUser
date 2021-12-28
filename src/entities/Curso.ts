@@ -16,6 +16,9 @@ export class Curso{
     @Column()
     language:string
 
+    @Column()
+    createdUser_id:string
+
     @ManyToOne(()=>User)
     @JoinColumn({name:"createdUser_id"})
     user:User
