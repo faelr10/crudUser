@@ -39,5 +39,19 @@ implements ICursoRepository
 
     }
 
+    async findById(id):Promise<Curso|Error>{
+
+        const curso = await this.getRepo().findOne(id)
+
+        return curso
+
+    }
+
+    async delete(id):Promise<void|Error>{
+        
+        await this.getRepo().delete(id)
+
+    }
+
 
 }

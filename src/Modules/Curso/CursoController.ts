@@ -40,5 +40,24 @@ export default class CursoController implements ICursoController{
 
     }
 
+    async findById(req:Request,res:Response):Promise<void>{
+
+        const {id} = req.params
+
+        const curso = await this.cursoService.findById(id)
+
+        res.json(curso)
+
+    }
+
+    async delete(req:Request,res:Response):Promise<void>{
+
+        const {id} = req.params
+
+        const curso = await this.cursoService.delete(id)
+
+        res.status(204).json(curso)
+
+    }
 
 }

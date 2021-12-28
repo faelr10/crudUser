@@ -30,6 +30,20 @@ export default class CursoService implements ICursoService{
 
     }
 
+    async findById(id):Promise<Curso|Error>{
+
+        const curso = await this.cursoRepository.findById(id)
+
+        return curso
+
+    }
+
+    async delete(id):Promise<void|Error>{
+
+        await this.cursoRepository.delete(id)
+
+    }
+
 
 
 }

@@ -11,3 +11,5 @@ export const CursoRoutes = Router()
 
 CursoRoutes.post('/',(req,res)=>CursoController.create(req,res))
 CursoRoutes.get('/',(req,res)=>CursoController.find(req,res))
+CursoRoutes.get('/:id',(req,res)=>CursoController.findById(req,res))
+CursoRoutes.delete('/:id',(req,res)=>CursoController.delete(req,res))
