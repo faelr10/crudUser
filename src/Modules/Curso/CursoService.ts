@@ -44,6 +44,13 @@ export default class CursoService implements ICursoService{
 
     }
 
+    async update(id,name,language):Promise<Curso|Error>{
+
+        const curso = await this.cursoRepository.update(id,name,language)
+
+        return curso
+
+    }
 
 
 }

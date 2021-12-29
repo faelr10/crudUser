@@ -2,8 +2,6 @@ import { Request, Response } from "express";
 import { Curso } from "../../entities/Curso";
 
 
-
-
 export interface ICurso{
     id?: string,
     name: string,
@@ -16,6 +14,7 @@ export interface ICursoRepository{
     find():Promise<object|Error>
     findById(id:string):Promise<Curso|Error>
     delete(id:string):Promise<void|Error>
+    update(id:string,name?:string,language?:string):Promise<Curso|Error>
 }
 
 export interface ICursoService{
@@ -23,6 +22,7 @@ export interface ICursoService{
     find():Promise<object|Error>
     findById(id):Promise<Curso|Error>
     delete(id):Promise<void|Error>
+    update(id:string,name?:string,language?:string):Promise<Curso|Error>
 }
 
 export interface ICursoController{
@@ -30,4 +30,5 @@ export interface ICursoController{
     find(req:Request,res:Response):Promise<void>
     findById(req:Request,res:Response):Promise<void>
     delete(req:Request,res:Response):Promise<void>
+    update(req:Request,res:Response):Promise<void>
 }

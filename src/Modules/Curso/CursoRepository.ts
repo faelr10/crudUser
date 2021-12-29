@@ -53,5 +53,18 @@ implements ICursoRepository
 
     }
 
+    async update(id:string,name?:string,language?:string):Promise<Curso|Error>{
+
+        const curso = await this.getRepo().findOne(id)
+
+        curso.name = name ? name : curso.name
+        curso.language = language ? language:curso.language
+
+        await this.getRepo().save(curso)
+
+        return curso
+
+    }
+
 
 }

@@ -60,4 +60,15 @@ export default class CursoController implements ICursoController{
 
     }
 
+    async update(req:Request,res:Response):Promise<void>{
+        
+        const {id} = req.params
+        const {name,language} = req.body
+
+        const curso = await this.cursoService.update(id,name,language)
+
+        res.json(curso)
+
+    }
+
 }
